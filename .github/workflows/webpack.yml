@@ -26,3 +26,9 @@ jobs:
       run: |
         yarn
         npm run build
+    - name : Deploy
+      run: |
+        git add -f static/bundle.js
+        git add -f static/bundle.js.map
+        git commit -m "yeet"
+        git push -f git@github.com:<USERNAME>/<REPO>.git gh-pages
