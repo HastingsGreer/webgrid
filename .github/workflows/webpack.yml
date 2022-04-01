@@ -30,4 +30,4 @@ jobs:
         git config --global user.email "MY_NAME@example.com"
         
         git commit -m "yeet"
-        git push -f ${{ github.token }}@github.com:HastingsGreer/webgrid.git master:gh-pages
+        git push -f ${{ github.token }}@https://github.com/HastingsGreer/webgrid master:gh-pages
