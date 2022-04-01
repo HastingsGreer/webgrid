@@ -24,7 +24,7 @@ export function setOrientationOffset(o) {
 
 export async function init() {
 
-  window.model = await tf.loadLayersModel('/tfjs_dir/model.json')
+  window.model = await tf.loadLayersModel('tfjs_dir/model.json')
  
   window.webcam = new Webcam(document.getElementById('player'))
 
