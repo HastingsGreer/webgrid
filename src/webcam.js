@@ -34,7 +34,7 @@ export class Webcam {
   capture () {
     return tf.tidy(() => {
       // Reads the image as a Tensor from the webcam <video> element.
-      const webcamImage = tf.fromPixels(this.webcamElement)
+      const webcamImage = tf.browser.fromPixels(this.webcamElement)
 
       // Crop the image so we're using the center square of the rectangular
       // webcam.
@@ -83,9 +83,7 @@ export class Webcam {
       navigator.getUserMedia = navigator.getUserMedia ||
           navigatorAny.webkitGetUserMedia || navigatorAny.mozGetUserMedia ||
           navigatorAny.msGetUserMedia
-
       if (navigator.getUserMedia) {
-        console.log('got webcam')
         navigator.getUserMedia(
           { video: true },
           stream => {
@@ -104,7 +102,7 @@ export class Webcam {
         if (navigator.mediaDevices.getUserMedia) {
           navigator.mediaDevices.getUserMedia(
             { video: true },
-            stream => {
+          ).then((stream) => {
               this.webcamElement.srcObject = stream
               this.webcamElement.addEventListener('loadeddata', async () => {
                 this.adjustVideoSize(
@@ -113,9 +111,7 @@ export class Webcam {
                 resolve()
               }, false)
             },
-            error => {
-              reject()
-            })
+            )
         } else {
           reject()
         }

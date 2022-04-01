@@ -59,6 +59,7 @@ async function init () {
 
 
   })
+  
   $('#save').click(function () {
     $.ajax({
       type: 'POST',
@@ -112,7 +113,6 @@ async function init () {
     gridslam.orientationOffset[1] = parseFloat(document.getElementById("rollOffset").value) / 10
   }
 
-  
   function checkLoadingDone() {
     try {
       if(cv.Mat && window.webcam){
@@ -135,4 +135,6 @@ async function init () {
 function initAwait () {
   init()
 }
-cv['onRuntimeInitialized'] = initAwait
+setTimeout(initAwait, 400)
+
+//cv['onRuntimeInitialized'] = initAwait

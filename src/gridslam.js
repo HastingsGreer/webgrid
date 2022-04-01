@@ -7,6 +7,8 @@ import * as apclust from 'affinity-propagation'
 var clustermaker = require("clusters")
 var fmin = require("fmin")
 
+window.process =false
+
 export let input_shape = 128
 
 export var orientation_events = []
@@ -22,7 +24,7 @@ export function setOrientationOffset(o) {
 
 export async function init() {
 
-  window.model = await tf.loadModel('/static/tfjs_dir/model.json')
+  window.model = await tf.loadLayersModel('/tfjs_dir/model.json')
  
   window.webcam = new Webcam(document.getElementById('player'))
 
@@ -95,6 +97,7 @@ export async function runmodel () {
   //console.log("Error:, ", Date.now() / 1000 - orientation_events[imu_idx].time) 
   var output = tf.tidy(() => {
     var image = window.webcam.capture()
+    var image = tf.image.resizeBilinear(image, [128, 128])
     
  
     var output = window.model.predict(image)
