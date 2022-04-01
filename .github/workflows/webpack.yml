@@ -34,4 +34,4 @@ jobs:
         git config --global user.email "MY_NAME@example.com"
         
         git commit -m "yeet"
-        git push -f git@github.com:<USERNAME>/<REPO>.git gh-pages
+        git push -f git@github.com:HastingsGreer/webgrid.git master:gh-pages
