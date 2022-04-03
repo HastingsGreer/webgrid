@@ -119,7 +119,6 @@ async function init () {
         $(".loading-fade").hide()
         $(".loading-msg").hide()
         kalman.init()
-        setTimeout(clickrun, 130)
       } else {
         setTimeout(checkLoadingDone, 130)
       }
