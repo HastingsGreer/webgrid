@@ -79,6 +79,7 @@ async function init () {
   
 
   function clickrun() {
+    window.DeviceOrientationEvent.requestPermission()
     gridslam.setRunning(!gridslam.running)
     $("#runmodel").text (gridslam.running ? "Stop Model" : "Run Model")
     if (gridslam.running) {
